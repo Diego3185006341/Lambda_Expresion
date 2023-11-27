@@ -5,14 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Employee {
-    String name ;
-    private LocalDate birthDate;
-    double salary;
+public class Products {
+
+    private Integer id;
+    private String name;
+    private Double price;
 }

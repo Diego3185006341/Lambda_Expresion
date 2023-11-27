@@ -4,8 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,26 +16,67 @@ public class Main {
         Person p2 = new Person("carlos ",LocalDate.of(1995, 2, 11),64546);
         Person p3 = new Person("albert ",LocalDate.of(2000, 1, 06),78453);
 
-        Employee e1 = new Employee("alfed",23,34546);
-        Employee e2 = new Employee("dino ",27,64546);
-        Employee e3 = new Employee("andres ",88,78453);
+        Employee e1 = new Employee("alfed",LocalDate.of(1990, 1, 7),34546);
+        Employee e2 = new Employee("dino ",LocalDate.of(1980, 2, 7),64546);
+        Employee e3 = new Employee("andres ",LocalDate.of(1993, 3, 7),78453);
 
+        Products pr1 = new Products(1, "Ceviche", 15.0);
+        Products pr2 = new Products(2, "Chilaquiles", 25.50);
+        Products pr3 = new Products(3, "Bandeja Paisa", 35.50);
+        Products pr4 = new Products(4, "Ceviche", 15.0);
 
 
         List<Person> persons = Arrays.asList(p1,p2,p3);
         List<Employee> employees = Arrays.asList(e1,e2,e3);
+        List<Products> products = Arrays.asList(pr1, pr2, pr3, pr4);
 
         // Filter foreach
        // persons.forEach(System.out::print);
 
-        List<Person> collect = persons.stream()
+        //filter
+
+       /* List<Person> collect = persons.stream()
                 .filter(sa -> getAge(sa.getBirthDate()) >= 28)
                 .collect(Collectors.toList());
 
 
-        ListMapper(collect);
+        ListMapper(collect);*/
+        //Mapper
+        /*
+        List<Integer> collect = persons.stream()
+                .map(person -> getAge(person.getBirthDate()))
+                .collect(Collectors.toList());
+        ListMapper(collect);*/
 
+        //Mapper Function
+        /*
+        Function<String,String> CoderFuncion = name -> " Coder " + name;
+        List<String> collect = persons.stream()
+                .map(Person::getName )
+                .map(CoderFuncion)
+                .collect(Collectors.toList());
+        ListMapper(collect);*/
 
+        //Maper Person to  Employee
+
+        /*List<Employee> collect = persons.stream()
+                .map(asd -> employeeMapper(asd))
+                .collect(Collectors.toList());
+
+        ListMapper(collect);*/
+
+        //sorted
+
+        Comparator<Person> byNameAsc = Comparator.comparing(Person::getName);
+        List<Person> personList = persons.stream()
+                .sorted(byNameAsc).collect(Collectors.toList());
+        ListMapper(personList);
+
+        Comparator<Person> byNameDesc = Comparator.comparing(Person::getName, Comparator.reverseOrder());
+        List<Person> personLista = persons.stream()
+                .sorted(byNameDesc)
+                .collect(Collectors.toList());
+        ListMapper(personLista);
 
         //filter
         /*
@@ -60,6 +104,16 @@ public class Main {
                 .collect(Collectors.toList());
         ListMapper(c);*/
     }
+
+    private static Employee employeeMapper(Person asd) {
+
+        return Employee.builder()
+                .name(asd.getName())
+                .birthDate(asd.getBirthDate())
+                .salary(asd.getSalary())
+                .build();
+    }
+
     public  static void ListMapper(List<?> Ls){
         Ls.forEach(System.out::print);
 

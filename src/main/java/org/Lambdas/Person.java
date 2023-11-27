@@ -1,14 +1,14 @@
 package org.Lambdas;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
+@ToString
+@Builder
 
 public class Person {
     String name;
