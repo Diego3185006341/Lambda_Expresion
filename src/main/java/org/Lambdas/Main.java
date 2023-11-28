@@ -168,7 +168,6 @@ public class Main {
                 .map(Products::getPrice)
                 .reduce(Double::sum);
 
-
         System.out.println(reduce);
 
 
