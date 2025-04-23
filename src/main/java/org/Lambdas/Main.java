@@ -60,7 +60,11 @@ public class Main {
         }
         System.out.println("mayor: "+  greatest);
         System.out.println("mayor: "+  least);
+        students.entrySet().stream().min(Map.Entry.comparingByKey());
+        List<Map.Entry<Integer, String>> collect1 = students.entrySet().stream().filter(entry -> entry.getKey() > 2).collect(Collectors.toList());
+
         students.forEach((key, value) -> System.out.println(key + " " + value));
+        System.out.println(collect1);
         // Filter foreach
        // persons.forEach(System.out::print);
 
