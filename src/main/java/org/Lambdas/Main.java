@@ -60,6 +60,7 @@ public class Main {
         }
         System.out.println("mayor: "+  greatest);
         System.out.println("mayor: "+  least);
+        students.forEach((key, value) -> System.out.println(key + " " + value));
         // Filter foreach
        // persons.forEach(System.out::print);
 
