@@ -30,7 +30,20 @@ public class Main {
         List<Person> persons = Arrays.asList(p1,p2,p3,p4,p5);
         List<Employee> employees = Arrays.asList(e1,e2,e3);
         List<Products> products = Arrays.asList(pr1, pr2, pr3, pr4);
+        Map<Integer, String> students = new HashMap<>();
+        students.put(1, "John");
+        students.put(2, "Emma");
+        students.put(3, "Mike");
 
+        int [] numbers = {21,34,67,3};
+        int greater;
+        int lesser;
+        List<Integer> numbersa = Arrays.asList(1, 2, 3, 4, 5, 6);
+        Optional<Integer> maxNumber = numbersa.stream().max(Integer::compareTo);
+        Optional<Integer> minNumber = numbersa.stream().min(Integer::compareTo);
+
+        System.out.println("Greatest: " + maxNumber.orElse(0)); // Handles empty list safely
+        System.out.println("Smallest: " + minNumber.orElse(0));
 
         // Filter foreach
        // persons.forEach(System.out::print);
@@ -172,6 +185,7 @@ public class Main {
         System.out.println(reduce);
 
 
+
         //filter employee by name
 
         /*
@@ -179,6 +193,7 @@ public class Main {
                 .collect(Collectors.toList());
         ListMapper(c);*/
     }
+
 
     private static Employee employeeMapper(Person asd) {
 
