@@ -38,6 +38,8 @@ public class Main {
         int [] numbers = {21,34,67,3};
         int greater;
         int lesser;
+        int greatest = numbers[0];
+        int least = numbers[0];
         List<Integer> numbersa = Arrays.asList(1, 2, 3, 4, 5, 6);
         Optional<Integer> maxNumber = numbersa.stream().max(Integer::compareTo);
         Optional<Integer> minNumber = numbersa.stream().min(Integer::compareTo);
@@ -45,17 +47,30 @@ public class Main {
         System.out.println("Greatest: " + maxNumber.orElse(0)); // Handles empty list safely
         System.out.println("Smallest: " + minNumber.orElse(0));
 
+        for(int saf : numbers){
+
+            if(saf > greatest){
+                greatest = saf;
+
+            }
+            if(saf < least){
+                least = saf;
+            }
+
+        }
+        System.out.println("mayor: "+  greatest);
+        System.out.println("mayor: "+  least);
         // Filter foreach
        // persons.forEach(System.out::print);
 
         //filter
 
-       /* List<Person> collect = persons.stream()
+        List<Person> collect = persons.stream()
                 .filter(sa -> getAge(sa.getBirthDate()) >= 28)
                 .collect(Collectors.toList());
 
 
-        ListMapper(collect);*/
+        ListMapper(collect);
         //Mapper
         /*
         List<Integer> collect = persons.stream()
